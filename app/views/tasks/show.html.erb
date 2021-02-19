@@ -1,0 +1,14 @@
+<h3>Task Details</h3>
+
+<label>Id</label>
+<%= @task.id %>  -
+
+<label>Title</label>
+<%= @task.title %> -
+
+<label>Description</label>
+<%= @task.description %>
+<br/>
+  <%= image_tag @task.image.variant(resize: "400x300>") if @task.image.attached? %>
+<br/>
+<%= link_to('View all Task', tasks_path) %>
