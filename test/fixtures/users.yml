@@ -1,0 +1,14 @@
+lufi_with_two_tasks:
+  email: lufi@example.com
+  authentication_token: secret1
+  encrypted_password: <%= Devise::Encryptor.digest(User, "password") %>
+
+tobi_with_one_task:
+  email: tobi@example.com
+  authentication_token: secret2
+  encrypted_password: <%= Devise::Encryptor.digest(User, "password") %>
+
+user_without_tasks:
+  email: user@example.com
+  authentication_token: secret3
+  encrypted_password: <%= Devise::Encryptor.digest(User, "password") %>

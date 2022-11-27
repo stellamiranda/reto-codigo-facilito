@@ -9,5 +9,3 @@ class Task < ApplicationRecord
   #before_save
   #after_update 
 end
-
-
