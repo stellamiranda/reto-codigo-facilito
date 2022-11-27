@@ -22,8 +22,8 @@ module Api
       def create
         @task = Task.new(task_params)
         # TODO: Implement auth 
-        # @task.user_id = current_user.id
-        @task.user_id = User.first.id
+        @task.user_id = current_user.id
+        # @task.user_id = User.first.id
         if @task.save
           render json: @task, status: 200
         else
@@ -32,7 +32,7 @@ module Api
             message_error = message_error + " & " + error
           end
           # render error: { error: message_error, status: 400 }
-          render error: { error: 'Unable to save this task', status: 400 }
+          render json: { error: 'Unable to save this task' }, status: 400
         end
 
       end
@@ -49,7 +49,7 @@ module Api
         if @task.image.attached? 
           render json: @task.image
         else
-          render error: { error: 'Unable to display image for this task', status: 400 }
+          render json: { error: 'Unable to display image for this task' }, status: 400
         end
       end 
       private

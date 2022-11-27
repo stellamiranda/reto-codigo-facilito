@@ -6,14 +6,11 @@ module Api
       rescue_from ActiveRecord::RecordNotFound, with: :render_404
 
       def check_basic_auth
-        params[:email] params[:password]
-        # authenticate_with_http_basic do |email, user_token|
-          user = User.authenticate(email, user_token)
-          unless user.empty?
-            @current_user = user
-          else
-            head :unauthorized
-          end
+        email, token = request.headers["email"], request.headers["token"]
+        if user = User.authenticate(email, token)
+          @current_user = user
+        else
+          head :unauthorized
         end
       end
 
@@ -22,7 +19,7 @@ module Api
       end
 
       def render_404
-        render json: { error: 'Task not found', status: 404 }
+        render json: { error: 'Task not found' }, status: 404
       end
     end
   end
