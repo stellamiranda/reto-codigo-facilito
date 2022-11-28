@@ -1,0 +1,14 @@
+first_task_lufi:
+  title: An important task
+  description: Some description
+  user: lufi_with_two_tasks
+
+second_task_lufi:
+  title: Another important task
+  description: Some description
+  user: lufi_with_two_tasks
+
+first_task_tobi:
+  title: Order files
+  description: Order all the files from the desk
+  user: tobi_with_one_task

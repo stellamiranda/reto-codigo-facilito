@@ -10,6 +10,6 @@ class User < ApplicationRecord
 
   def self.authenticate(email, user_token)
     # option: where("email = #{email} AND authentication_token = #{user_token}")
-    where("email = ? AND authentication_token = ?", email, user_token)
+    where("email = ? AND authentication_token = ?", email, user_token).take
   end
 end
