@@ -21,10 +21,9 @@ class CreateTaskTest < ApplicationSystemTestCase
     click_on("Crear Tarea")
 
     assert_text "Task saved!"
-    assert_equal description, Task.first.description
   end
 
-  test "we can see validatio errors" do
+  test "we can see validation errors" do
     sign_in @user
 
     visit new_task_path
