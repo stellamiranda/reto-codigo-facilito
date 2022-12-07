@@ -6,14 +6,12 @@ module Api
       rescue_from ActiveRecord::RecordNotFound, with: :render_404
 
       def check_basic_auth
-        params[:email] params[:password]
+        email, user_token = request.headers["email"], request.headers["token"]
         # authenticate_with_http_basic do |email, user_token|
-          user = User.authenticate(email, user_token)
-          unless user.empty?
-            @current_user = user
-          else
-            head :unauthorized
-          end
+        if user = User.authenticate(email, user_token)
+          @current_user = user
+        else
+          head :unauthorized
         end
       end
 
